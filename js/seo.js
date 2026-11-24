@@ -5,7 +5,7 @@ const datosNegocio = {
     "name": "DE DIEZ MECÁNICA",
     "description": "Mecánica ligera y limpieza interior y exterior de vehículos en Caseros, Buenos Aires.",
     "telephone": "+5492665004186",
-    "url": "https://agent-6b01f801b5a3dc--extraordinary-mochi-f5bd57.netlify.app/",
+    "url": "https://dediezmecanica.com.ar/",
     "address": {
         "@type": "PostalAddress",
         "streetAddress": "Martín de Alzaga 2874",

@@ -1,0 +1,610 @@
+/* =========================================================
+   DE DIEZ — HOJA DE ESTILOS
+   Organización:
+   1. Variables y configuración general
+   2. Estructura y navegación
+   3. Portada (hero)
+   4. Secciones y servicios
+   5. Presentación
+   6. Contacto y pie de página
+   7. Componentes reutilizables
+   8. Diseño adaptable (responsive)
+   ========================================================= */
+
+
+/* 1. VARIABLES Y CONFIGURACIÓN GENERAL
+   --------------------------------------------------------- */
+
+:root {
+    /* Colores principales */
+    --color-fondo: #101114;
+    --color-panel: #191b20;
+    --color-panel-secundario: #202229;
+    --color-rojo: #e1262f;
+    --color-blanco: #f5f5f5;
+    --color-texto: #a6a8af;
+    --color-borde: #30323a;
+
+    /* Tipografías */
+    --fuente-principal: "Inter", Arial, sans-serif;
+    --fuente-titulos: "Barlow Condensed", Impact, sans-serif;
+
+    /* Otros valores */
+    --radio-borde: 10px;
+    --transicion: 0.2s ease;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--color-fondo);
+    color: var(--color-blanco);
+    font-family: var(--fuente-principal);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.wrap {
+    width: min(1120px, calc(100% - 40px));
+    margin: 0 auto;
+}
+.brand-logo {
+    width: 170px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* 2. ESTRUCTURA Y NAVEGACIÓN
+   --------------------------------------------------------- */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(16, 17, 20, 0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav {
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-family: var(--fuente-titulos);
+    font-weight: 900;
+    font-size: 27px;
+    letter-spacing: 1.4px;
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    background: var(--color-rojo);
+    border-radius: 8px;
+    font-size: 19px;
+}
+
+.navlinks {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    color: #d2d2d5;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.navlinks a:hover {
+    color: var(--color-blanco);
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    border: 0;
+    color: var(--color-blanco);
+    font-size: 25px;
+    cursor: pointer;
+}
+
+
+/* 3. PORTADA PRINCIPAL (HERO)
+   --------------------------------------------------------- */
+
+.hero {
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    /* Imagen de fondo + capas oscuras para mejorar la lectura */
+    background:
+        linear-gradient(
+            90deg,
+            rgba(10, 11, 13, 0.97) 0%,
+            rgba(10, 11, 13, 0.82) 48%,
+            rgba(10, 11, 13, 0.32) 100%
+        ),
+        url("https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=2000&q=85")
+        center / cover;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 110px;
+    background: linear-gradient(transparent, var(--color-fondo));
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 670px;
+    padding: 80px 0;
+}
+
+.hero h1 {
+    margin: 22px 0;
+    font-size: clamp(58px, 9vw, 104px);
+    letter-spacing: -1px;
+    line-height: 0.98;
+}
+
+.hero h1 span {
+    color: var(--color-rojo);
+}
+
+.hero p {
+    max-width: 500px;
+    margin: 0 0 30px;
+    color: #c5c6ca;
+    font-size: 16px;
+}
+
+.hero-note {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    margin-top: 38px;
+    color: #c7c8cc;
+    font-size: 12px;
+}
+
+.hero-note span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dot {
+    width: 7px;
+    height: 7px;
+    background: var(--color-rojo);
+    border-radius: 50%;
+}
+
+
+/* 4. SECCIONES Y TÍTULOS
+   --------------------------------------------------------- */
+
+section {
+    padding: 88px 0;
+}
+
+.section-head {
+    max-width: 650px;
+    margin-bottom: 38px;
+}
+
+.section-head .eyebrow {
+    margin-bottom: 15px;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    text-transform: uppercase;
+    line-height: 0.98;
+}
+
+h2 {
+    margin-bottom: 14px;
+    font-size: clamp(40px, 6vw, 62px);
+}
+
+.section-head p {
+    margin: 0;
+    color: var(--color-texto);
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ff5960;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 30px;
+    height: 2px;
+    background: var(--color-rojo);
+}
+
+
+/* 5. TARJETAS DE SERVICIOS
+   --------------------------------------------------------- */
+
+.services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.service {
+    min-height: 210px;
+    padding: 26px;
+    background: var(--color-panel);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    transition: var(--transicion);
+}
+
+.service:hover {
+    transform: translateY(-4px);
+    border-color: #7d282d;
+}
+
+.service-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 24px;
+    background: rgba(225, 38, 47, 0.13);
+    border: 1px solid rgba(225, 38, 47, 0.3);
+    border-radius: 9px;
+    font-size: 23px;
+}
+
+.service h3 {
+    margin-bottom: 10px;
+    font-size: 27px;
+}
+
+.service p {
+    margin: 0;
+    color: var(--color-texto);
+    font-size: 13px;
+}
+
+
+/* 6. SECCIÓN DE PRESENTACIÓN / SOBRE NOSOTROS
+   --------------------------------------------------------- */
+
+.split {
+    background: #17191e;
+}
+
+.split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 55px;
+}
+
+.photo {
+    min-height: 410px;
+    position: relative;
+    overflow: hidden;
+    background:
+        url("https://images.unsplash.com/photo-1608259243654-70c070e0f6ed?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D")
+        center / cover;
+    border-radius: 12px;
+}
+
+.photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+}
+
+.checklist {
+    display: grid;
+    gap: 13px;
+    margin: 25px 0 30px;
+    padding: 0;
+    color: #d1d2d5;
+    font-size: 14px;
+    list-style: none;
+}
+
+.checklist li::before {
+    content: "✓";
+    margin-right: 12px;
+    color: var(--color-rojo);
+    font-weight: 900;
+}
+
+
+/* 7. BOTONES Y ELEMENTOS REUTILIZABLES
+   --------------------------------------------------------- */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 13px 20px;
+    background: var(--color-rojo);
+    border: 1px solid var(--color-rojo);
+    border-radius: 7px;
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    transition: var(--transicion);
+}
+
+.btn:hover {
+    background: #bf1d25;
+    transform: translateY(-2px);
+}
+
+.btn.outline {
+    background: transparent;
+    border-color: #555861;
+}
+
+.btn.outline:hover {
+    background: rgba(225, 38, 47, 0.1);
+    border-color: var(--color-rojo);
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+/* 8. CONTACTO
+   --------------------------------------------------------- */
+
+.contact {
+    padding: 62px 0;
+    background: linear-gradient(135deg, #a91620, var(--color-rojo));
+}
+
+.contact-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.contact h2 {
+    font-size: clamp(38px, 5vw, 58px);
+}
+
+.contact p {
+    margin: 10px 0 0;
+    color: #ffe0e1;
+}
+
+.contact .btn {
+    background: #111216;
+    border-color: #111216;
+    white-space: nowrap;
+}
+
+.contact .btn:hover {
+    background: #292a30;
+}
+
+
+/* 9. PIE DE PÁGINA (FOOTER)
+   --------------------------------------------------------- */
+
+footer {
+    padding: 30px 0;
+    border-top: 1px solid var(--color-borde);
+    color: #888b93;
+    font-size: 12px;
+}
+
+.footer-inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-brand {
+    color: white;
+    font-family: var(--fuente-titulos);
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+
+/* 10. BOTÓN FLOTANTE DE WHATSAPP
+   --------------------------------------------------------- */
+
+.wa-float {
+    width: 58px;
+    height: 58px;
+
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #20c76a;
+    border-radius: 50%;
+
+    box-shadow: 0 8px 25px #0008;
+    transition: 0.2s ease;
+}
+
+.wa-float img {
+    width: 34px;
+    height: 34px;
+    object-fit: contain;
+}
+
+.wa-float:hover {
+    transform: scale(1.1);
+}
+
+
+/* 11. DISEÑO ADAPTABLE (RESPONSIVE)
+   --------------------------------------------------------- */
+
+/* Tablets y celulares */
+@media (max-width: 760px) {
+    .wrap {
+        width: min(100% - 30px, 560px);
+    }
+
+    .nav {
+        height: 66px;
+    }
+
+    /* Menú desplegable para pantallas pequeñas */
+    .navlinks {
+        display: none;
+        position: absolute;
+        top: 66px;
+        right: 0;
+        left: 0;
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px;
+        background: #15161a;
+        border-bottom: 1px solid var(--color-borde);
+    }
+
+    .navlinks.open {
+        display: flex;
+    }
+
+    .nav > .btn {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .hero {
+        min-height: 590px;
+        background-position: 60% center;
+    }
+
+    .hero-content {
+        padding: 70px 0;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .hero-note {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    section {
+        padding: 68px 0;
+    }
+
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .service {
+        min-height: 190px;
+        padding: 20px;
+    }
+
+    .service h3 {
+        font-size: 23px;
+    }
+
+    .split-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .photo {
+        min-height: 280px;
+        grid-row: 2;
+    }
+
+    .contact-inner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .contact .btn {
+        width: 100%;
+    }
+}
+
+/* Celulares pequeños */
+@media (max-width: 440px) {
+    .services {
+        grid-template-columns: 1fr;
+    }
+
+    .service {
+        min-height: 0;
+    }
+
+    .actions .btn {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 58px;
+    }
+}
